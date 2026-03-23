@@ -1,0 +1,8 @@
+{
+  "name": "lebenslauf-builder-skills",
+  "version": "2.0.0",
+  "description": "Skills collection for the GetResume SaaS platform — a Lebenslauf-Builder + Job Automation platform for the German market. Vue.js 3 SPA + Django REST API architecture. Includes: Django API core, Vue.js CV editor, Vue.js dashboard, German legal compliance (DSGVO), Stripe payments, SEO blog, n8n automation, CV templates, Hetzner deployment, Apify job scraping, AI cover letter engine, email automation, and application pipeline.",
+  "author": {
+    "name": "sudo_ai"
+  }
+}

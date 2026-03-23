@@ -1,0 +1,65 @@
+# Core
+Django>=5.1,<6.0
+djangorestframework>=3.15
+psycopg[binary]>=3.1
+
+# Admin UI
+django-unfold>=0.42
+
+# DRF Authentication (JWT)
+djangorestframework-simplejwt>=5.3
+dj-rest-auth[with-social]>=7.0
+
+# Authentication
+django-allauth>=65.0
+
+# API utilities
+django-filter>=24.0
+drf-spectacular>=0.28  # OpenAPI/Swagger docs
+
+# Security
+django-csp>=4.0
+django-cors-headers>=4.4
+django-encrypted-model-fields>=0.6
+
+# Task queue
+celery[redis]>=5.4
+django-celery-beat>=2.6
+redis>=5.0
+
+# PDF generation
+WeasyPrint>=62.0
+Pillow>=10.0
+
+# Static files
+whitenoise>=6.7
+
+# SEO
+django-meta>=2.4
+
+# Email
+django-anymail[amazon-ses]>=12.0
+
+# Brevo CRM (contact sync)
+sib-api-v3-sdk>=7.6
+
+# Storage
+django-storages[boto3]>=1.14
+
+# AI
+anthropic>=0.40
+
+# Job scraping
+apify-client>=1.7
+
+# Excel export
+openpyxl>=3.1
+
+# Monitoring
+sentry-sdk>=2.0
+
+# Production server
+gunicorn>=22.0
+
+# Development
+django-debug-toolbar>=4.4

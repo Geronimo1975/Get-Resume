@@ -1,0 +1,18 @@
+Hallo {{ user.first_name }},
+
+vielen Dank für Ihre Registrierung bei GetResume.
+
+Bitte bestätigen Sie Ihre E-Mail-Adresse, indem Sie auf den folgenden Link klicken:
+
+{{ activate_url }}
+
+Dieser Link ist 3 Tage gültig.
+
+Falls Sie sich nicht bei GetResume registriert haben, können Sie diese E-Mail ignorieren.
+
+Mit freundlichen Grüßen
+Ihr GetResume-Team
+
+--
+GetResume – Professionelle Bewerbungsunterlagen
+https://resume.get-hub.io

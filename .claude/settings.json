@@ -1,0 +1,49 @@
+{
+  "enabledPlugins": {
+    "lebenslauf-builder-skills@lebenslauf-marketplace": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(python3 manage.py check:*)",
+      "Bash(python3 manage.py makemigrations:*)",
+      "Bash(python3 manage.py migrate:*)",
+      "Bash(python3 manage.py showmigrations:*)",
+      "Bash(python3 manage.py shell_plus:*)",
+      "Bash(python3 manage.py collectstatic:*)",
+      "Bash(python3 manage.py test:*)",
+      "Bash(python3 manage.py dbshell:*)",
+      "Bash(python3 -c:*)",
+      "Bash(python3 -m pytest:*)",
+      "Bash(pip3 install:*)",
+      "Bash(pip3 list:*)",
+      "Bash(pip3 show:*)",
+      "Bash(pip3 freeze:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npm list:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npx:*)",
+      "Bash(nvm use:*)",
+      "Bash(nvm ls:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(docker compose up:*)",
+      "Bash(docker compose down:*)",
+      "Bash(docker compose ps:*)",
+      "Bash(docker compose logs:*)",
+      "Bash(docker compose exec:*)",
+      "Bash(docker compose build:*)",
+      "Bash(celery -A config:*)",
+      "Bash(source ~/.nvm/nvm.sh:*)",
+      "Bash(which:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir -p:*)",
+      "Bash(rm -f:*)",
+      "Bash(rm -rf node_modules:*)",
+      "Bash(rm -rf frontend/node_modules:*)",
+      "Bash(find /Users/sudo_ai/Get_Resume:*)",
+      "Bash(wc:*)"
+    ],
+    "deny": []
+  }
+}

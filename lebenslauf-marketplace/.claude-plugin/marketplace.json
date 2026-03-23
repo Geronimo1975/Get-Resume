@@ -1,0 +1,19 @@
+{
+  "name": "lebenslauf-marketplace",
+  "description": "Local marketplace for Lebenslauf-Builder SaaS platform skills",
+  "owner": {
+    "name": "sudo_ai"
+  },
+  "plugins": [
+    {
+      "name": "lebenslauf-builder-skills",
+      "description": "Skills collection for the Lebenslauf-Builder SaaS platform targeting the German job market. Includes Django core, HTMX editor, German legal compliance (DSGVO), Stripe payments, dashboards, SEO blog, n8n automation, CV templates, and Hetzner deployment.",
+      "version": "1.0.0",
+      "author": {
+        "name": "sudo_ai"
+      },
+      "source": "./lebenslauf-builder-skills",
+      "category": "development"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lebenslauf-Builder — Professionelle Lebensläufe für Deutschland</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 640px;
+            text-align: center;
+            padding: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #60a5fa;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+        a:hover { opacity: 0.85; }
+        .primary {
+            background: #3b82f6;
+            color: #fff;
+        }
+        .secondary {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+        }
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">In Entwicklung</span>
+        <h1>Lebenslauf-Builder</h1>
+        <p>
+            Professionelle Lebensläufe, Bewerbungsschreiben und Deckblätter
+            — speziell für den deutschen Arbeitsmarkt.
+            DSGVO-konform. Made in Germany.
+        </p>
+        <div class="links">
+            <a href="/admin-dashboard/" class="primary">Admin-Dashboard</a>
+            <a href="/konto/login/" class="secondary">Anmelden</a>
+            <a href="/health/" class="secondary">API Status</a>
+        </div>
+        <div class="footer">
+            <span class="status"><span class="dot"></span> Server läuft</span>
+        </div>
+    </div>
+</body>
+</html>
