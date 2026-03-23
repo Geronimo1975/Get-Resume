@@ -6,6 +6,7 @@ import { useEditorStore } from '@/stores/editor'
 import { useAutosave } from '@/composables/useAutosave'
 import { useSections } from '@/composables/useSections'
 import { useToast } from '@/composables/useToast'
+import { downloadPdf } from '@/api/documents'
 import type { SectionType } from '@/types'
 import EditorToolbar from '@/components/editor/EditorToolbar.vue'
 import EditorLayout from '@/components/editor/EditorLayout.vue'
@@ -46,8 +47,21 @@ function handleRemoveSection(id: string) {
   removeSection(id)
 }
 
-function handleExportPdf() {
+async function handleExportPdf() {
+  if (!editor.document) return
   toast({ title: 'PDF-Export', description: 'PDF wird generiert...' })
+  try {
+    const blob = await downloadPdf(editor.document.id)
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${editor.document.title || 'Lebenslauf'}.pdf`
+    a.click()
+    URL.revokeObjectURL(url)
+    toast({ title: 'Fertig', description: 'PDF wurde heruntergeladen.' })
+  } catch {
+    toast({ title: 'Fehler', description: 'PDF konnte nicht erstellt werden.', variant: 'destructive' })
+  }
 }
 </script>
 

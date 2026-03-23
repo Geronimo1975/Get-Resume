@@ -28,3 +28,10 @@ export function duplicateDocument(id: string) {
 export function exportDocumentPdf(id: string) {
   return api.get(`/documents/${id}/export-pdf/`, { responseType: 'blob' })
 }
+
+export async function downloadPdf(id: string): Promise<Blob> {
+  const response = await api.get(`/documents/${id}/pdf/`, {
+    responseType: 'blob',
+  })
+  return response.data
+}
