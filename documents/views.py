@@ -53,8 +53,11 @@ class DocumentViewSet(viewsets.ModelViewSet):
     def preview(self, request, pk=None):
         """Render HTML preview for the editor iframe."""
         document = self.get_object()
-        # TODO: Render HTML from content + template + theme
-        return Response({"html": "<p>Preview coming soon</p>"})
+        from .services import PDFRenderingService
+        service = PDFRenderingService()
+        html = service.render_to_html(document)
+        from django.http import HttpResponse
+        return HttpResponse(html, content_type="text/html; charset=utf-8")
 
     @action(detail=True, methods=["get"], url_path="ats-score")
     def ats_score(self, request, pk=None):
@@ -76,8 +79,24 @@ class DocumentViewSet(viewsets.ModelViewSet):
     def pdf(self, request, pk=None):
         """Generate and return PDF."""
         document = self.get_object()
-        # TODO: WeasyPrint PDF generation
-        return Response({"status": "pdf_generation_not_implemented"}, status=501)
+        if document.is_premium and not request.user.profile.is_premium:
+            return Response(
+                {"detail": "Premium-Abonnement erforderlich."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        from .services import PDFRenderingService
+        service = PDFRenderingService()
+        if not document.pdf_file:
+            service.render_and_save(document)
+            document.refresh_from_db()
+        filename = f"{document.title[:50].replace(' ', '_')}.pdf"
+        from django.http import FileResponse
+        return FileResponse(
+            document.pdf_file.open("rb"),
+            as_attachment=True,
+            filename=filename,
+            content_type="application/pdf",
+        )
 
 
 class TemplateListView(generics.ListAPIView):
