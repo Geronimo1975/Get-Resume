@@ -1,0 +1,20 @@
+{% if weiterbildungen.eintraege %}
+<div class="cv-section">
+  <h2 class="cv-section-title">{{ section_title|default:"Weiterbildungen" }}</h2>
+  <div class="cv-divider"></div>
+  {% for entry in weiterbildungen.eintraege %}
+  <div class="cv-entry">
+    <div class="cv-entry-header">
+      <strong>{{ entry.titel }}</strong>
+      {% if entry.datum %}<span class="cv-date">{{ entry.datum }}</span>{% endif %}
+    </div>
+    {% if entry.anbieter %}
+    <div class="cv-entry-sub">{{ entry.anbieter }}</div>
+    {% endif %}
+    {% if entry.beschreibung %}
+    <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ document.title|default:"Lebenslauf" }}</title>
+
+  <style>
+    /* ---- @font-face declarations ---- */
+    @font-face {
+      font-family: 'Inter';
+      src: url('{{ fonts_base }}/inter/Inter-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url('{{ fonts_base }}/inter/Inter-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Inter';
+      src: url('{{ fonts_base }}/inter/Inter-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Merriweather';
+      src: url('{{ fonts_base }}/merriweather/Merriweather-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Merriweather';
+      src: url('{{ fonts_base }}/merriweather/Merriweather-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Source Sans Pro';
+      src: url('{{ fonts_base }}/source-sans-pro/SourceSansPro-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Source Sans Pro';
+      src: url('{{ fonts_base }}/source-sans-pro/SourceSansPro-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ---- CSS custom properties from theme ---- */
+    :root {
+      --cv-primary: {{ theme.primary|default:"#4338ca" }};
+      --cv-secondary: {{ theme.secondary|default:"#64748b" }};
+      --cv-accent: {{ theme.accent|default:"#4338ca" }};
+      --cv-text: {{ theme.text|default:"#1a1a1a" }};
+      --cv-text-light: {{ theme.text_light|default:"#666666" }};
+      --cv-background: {{ theme.background|default:"#ffffff" }};
+      --cv-surface: {{ theme.surface|default:"#f8fafc" }};
+      --cv-border: {{ theme.border|default:"#d1d5db" }};
+      --cv-font-heading: {{ theme.font_heading|default:"'Inter', 'Helvetica Neue', Arial, sans-serif" }};
+      --cv-font-body: {{ theme.font_body|default:"'Merriweather', 'Georgia', 'Times New Roman', serif" }};
+    }
+
+    /* ---- Base styles ---- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--cv-font-body);
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--cv-text);
+      background: var(--cv-background);
+    }
+
+    .cv-preview {
+      padding: 48px 56px;
+      min-height: 100%;
+    }
+
+    /* ---- Header (persoenliche_daten) ---- */
+    .cv-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--cv-primary);
+    }
+
+    .cv-name {
+      font-family: var(--cv-font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin: 0 0 8px;
+      color: #111;
+    }
+
+    .cv-contact {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 10.5px;
+      color: #444;
+      flex-wrap: wrap;
+    }
+
+    .cv-details,
+    .cv-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 9.5px;
+      color: var(--cv-text-light);
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Section ---- */
+    .cv-section {
+      margin-bottom: 18px;
+    }
+
+    .cv-section-title {
+      font-family: var(--cv-font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--cv-primary);
+      margin: 0 0 4px;
+    }
+
+    .cv-divider {
+      height: 1px;
+      background: var(--cv-border);
+      margin-bottom: 10px;
+    }
+
+    /* ---- Entries (beruf, ausbildung, weiterbildung, ehrenamt) ---- */
+    .cv-entry {
+      margin-bottom: 10px;
+    }
+
+    .cv-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .cv-entry-header strong {
+      font-size: 11px;
+    }
+
+    .cv-date {
+      font-size: 9.5px;
+      color: var(--cv-text-light);
+      white-space: nowrap;
+    }
+
+    .cv-entry-sub {
+      font-size: 10px;
+      color: #555;
+      margin-top: 1px;
+    }
+
+    .cv-entry-desc {
+      margin: 4px 0 0;
+      font-size: 10.5px;
+      color: #333;
+    }
+
+    .cv-tasks {
+      margin: 4px 0 0 16px;
+      padding: 0;
+      font-size: 10.5px;
+      color: #333;
+    }
+
+    .cv-tasks li {
+      margin-bottom: 2px;
+    }
+
+    /* ---- Kenntnisse (skills with bars) ---- */
+    .cv-skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+    }
+
+    .cv-skill-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      margin-bottom: 2px;
+    }
+
+    .cv-skill-cat {
+      font-size: 9px;
+      color: #888;
+    }
+
+    .cv-skill-bar {
+      height: 5px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .cv-skill-fill {
+      height: 100%;
+      background: var(--cv-primary);
+      border-radius: 3px;
+    }
+
+    /* ---- Sprachen ---- */
+    .cv-lang-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+    }
+
+    .cv-lang {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cv-lang-name {
+      font-size: 10.5px;
+    }
+
+    .cv-lang-badge {
+      font-family: var(--cv-font-heading);
+      font-size: 9px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: #eef2ff;
+      color: var(--cv-primary);
+    }
+
+    /* ---- Interessen ---- */
+    .cv-interests {
+      font-size: 10.5px;
+      color: #333;
+      margin: 0;
+    }
+
+    /* ---- Unterschrift ---- */
+    .cv-signature {
+      margin-top: 32px;
+    }
+
+    .cv-sig-line {
+      font-size: 10.5px;
+      color: #333;
+      margin-bottom: 28px;
+    }
+
+    .cv-sig-placeholder {
+      width: 180px;
+      border-bottom: 1px solid #999;
+    }
+
+    {% block template_css %}{% endblock %}
+  </style>
+
+  <style>
+    {% include "cv/print.css" %}
+  </style>
+</head>
+<body>
+  <div class="cv-preview">
+    {% block page_content %}
+      {% block header %}{% endblock %}
+      {% block main %}{% endblock %}
+      {% block footer %}{% endblock %}
+    {% endblock %}
+  </div>
+</body>
+</html>

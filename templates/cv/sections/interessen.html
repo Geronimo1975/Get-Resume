@@ -1,0 +1,7 @@
+{% if interessen.interessen %}
+<div class="cv-section">
+  <h2 class="cv-section-title">{{ section_title|default:"Interessen" }}</h2>
+  <div class="cv-divider"></div>
+  <p class="cv-interests">{{ interessen.interessen|join:", " }}</p>
+</div>
+{% endif %}

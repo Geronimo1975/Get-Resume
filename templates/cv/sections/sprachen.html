@@ -1,0 +1,14 @@
+{% if sprachen.eintraege %}
+<div class="cv-section">
+  <h2 class="cv-section-title">{{ section_title|default:"Sprachen" }}</h2>
+  <div class="cv-divider"></div>
+  <div class="cv-lang-list">
+    {% for entry in sprachen.eintraege %}
+    <div class="cv-lang">
+      <span class="cv-lang-name">{{ entry.sprache }}</span>
+      <span class="cv-lang-badge">{% if entry.ist_muttersprache %}Muttersprache{% else %}{{ entry.niveau }}{% endif %}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,33 @@
+{% if persoenliche_daten %}
+<div class="cv-header">
+  {% if persoenliche_daten.vorname or persoenliche_daten.nachname %}
+  <h1 class="cv-name">{{ persoenliche_daten.vorname }} {{ persoenliche_daten.nachname }}</h1>
+  {% endif %}
+
+  {% if persoenliche_daten.email or persoenliche_daten.telefon or persoenliche_daten.stadt %}
+  <div class="cv-contact">
+    {% if persoenliche_daten.email %}<span>{{ persoenliche_daten.email }}</span>{% endif %}
+    {% if persoenliche_daten.telefon %}<span>{{ persoenliche_daten.telefon }}</span>{% endif %}
+    {% if persoenliche_daten.stadt %}<span>{{ persoenliche_daten.stadt }}</span>{% endif %}
+  </div>
+  {% endif %}
+
+  {% if persoenliche_daten.geburtsdatum or persoenliche_daten.staatsangehoerigkeit or persoenliche_daten.familienstand %}
+  <div class="cv-details">
+    {% if persoenliche_daten.geburtsdatum %}
+    <span>Geb. {{ persoenliche_daten.geburtsdatum }}{% if persoenliche_daten.geburtsort %}, {{ persoenliche_daten.geburtsort }}{% endif %}</span>
+    {% endif %}
+    {% if persoenliche_daten.staatsangehoerigkeit %}<span>{{ persoenliche_daten.staatsangehoerigkeit }}</span>{% endif %}
+    {% if persoenliche_daten.familienstand %}<span>{{ persoenliche_daten.familienstand }}</span>{% endif %}
+  </div>
+  {% endif %}
+
+  {% if persoenliche_daten.linkedin or persoenliche_daten.xing or persoenliche_daten.website %}
+  <div class="cv-links">
+    {% if persoenliche_daten.linkedin %}<span>LinkedIn: {{ persoenliche_daten.linkedin }}</span>{% endif %}
+    {% if persoenliche_daten.xing %}<span>Xing: {{ persoenliche_daten.xing }}</span>{% endif %}
+    {% if persoenliche_daten.website %}<span>{{ persoenliche_daten.website }}</span>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endif %}

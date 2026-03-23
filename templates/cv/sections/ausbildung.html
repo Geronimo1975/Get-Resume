@@ -1,0 +1,23 @@
+{% if ausbildung.eintraege %}
+<div class="cv-section">
+  <h2 class="cv-section-title">{{ section_title|default:"Ausbildung" }}</h2>
+  <div class="cv-divider"></div>
+  {% for entry in ausbildung.eintraege %}
+  <div class="cv-entry">
+    <div class="cv-entry-header">
+      <strong>{{ entry.abschluss }}{% if entry.fachrichtung %} — {{ entry.fachrichtung }}{% endif %}</strong>
+      <span class="cv-date">{% if entry.von %}{{ entry.von }}{% endif %}{% if entry.von and entry.bis %} – {% endif %}{% if entry.bis %}{{ entry.bis }}{% endif %}</span>
+    </div>
+    <div class="cv-entry-sub">
+      {{ entry.institution }}{% if entry.ort %}, {{ entry.ort }}{% endif %}
+    </div>
+    {% if entry.note %}
+    <p class="cv-entry-desc">Note: {{ entry.note }}</p>
+    {% endif %}
+    {% if entry.beschreibung %}
+    <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

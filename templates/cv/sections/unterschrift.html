@@ -1,0 +1,6 @@
+{% if unterschrift %}
+<div class="cv-section cv-signature">
+  <div class="cv-sig-line">{% if unterschrift.ort %}{{ unterschrift.ort }}{% endif %}{% if unterschrift.ort and unterschrift.datum %}, {% endif %}{% if unterschrift.datum %}{{ unterschrift.datum }}{% endif %}</div>
+  <div class="cv-sig-placeholder"></div>
+</div>
+{% endif %}
