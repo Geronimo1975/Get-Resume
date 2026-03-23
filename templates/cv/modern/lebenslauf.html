@@ -1,0 +1,363 @@
+{% extends "cv/base_cv.html" %}
+
+{% block template_css %}
+/* ============================================================
+   MODERN — Sidebar Layout (35% / 65%)
+   Target: Tech, Marketing, Design, Modern industries
+   ============================================================ */
+
+/* ---- Remove default preview padding ---- */
+.cv-preview {
+  padding: 0;
+  display: flex;
+  min-height: 297mm;
+}
+
+/* ---- Two-column layout ---- */
+.modern-sidebar {
+  width: 35%;
+  min-height: 297mm;
+  background: var(--cv-primary);
+  color: #ffffff;
+  padding: 36px 24px;
+  flex-shrink: 0;
+}
+
+.modern-main {
+  width: 65%;
+  background: var(--cv-background);
+  padding: 36px 32px;
+}
+
+/* ---- Sidebar: Photo ---- */
+.modern-photo-wrap {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modern-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ---- Sidebar: Name & Contact ---- */
+.modern-sidebar .cv-header {
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+}
+
+.modern-sidebar .cv-name {
+  font-family: var(--cv-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  margin: 0 0 8px;
+}
+
+.modern-sidebar .cv-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.modern-sidebar .cv-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 6px;
+}
+
+.modern-sidebar .cv-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 4px;
+}
+
+/* ---- Sidebar: Section titles ---- */
+.modern-sidebar .cv-section {
+  margin-bottom: 18px;
+}
+
+.modern-sidebar .cv-section-title {
+  font-family: var(--cv-font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.modern-sidebar .cv-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+}
+
+/* ---- Sidebar: Skills (dark bg) ---- */
+.modern-sidebar .cv-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.modern-sidebar .cv-skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.modern-sidebar .cv-skill-cat {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modern-sidebar .cv-skill-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.modern-sidebar .cv-skill-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* ---- Sidebar: Sprachen (dark bg) ---- */
+.modern-sidebar .cv-lang-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modern-sidebar .cv-lang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.modern-sidebar .cv-lang-name {
+  font-size: 9.5px;
+  color: #ffffff;
+}
+
+.modern-sidebar .cv-lang-badge {
+  font-family: var(--cv-font-heading);
+  font-size: 8px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: none;
+}
+
+/* ---- Sidebar: Interessen (dark bg) ---- */
+.modern-sidebar .cv-interests {
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* ---- Main: Section titles ---- */
+.modern-main .cv-section {
+  margin-bottom: 16px;
+}
+
+.modern-main .cv-section-title {
+  font-family: var(--cv-font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--cv-primary);
+  margin: 0 0 4px;
+}
+
+.modern-main .cv-divider {
+  height: 1px;
+  background: var(--cv-border);
+  margin-bottom: 10px;
+}
+
+/* ---- Main: Entries ---- */
+.modern-main .cv-entry {
+  margin-bottom: 12px;
+}
+
+.modern-main .cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.modern-main .cv-entry-header strong {
+  font-family: var(--cv-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cv-text);
+}
+
+.modern-main .cv-date {
+  font-family: var(--cv-font-heading);
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--cv-text-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.modern-main .cv-entry-sub {
+  font-size: 10px;
+  color: var(--cv-secondary);
+  margin-top: 1px;
+}
+
+.modern-main .cv-entry-desc {
+  margin: 3px 0 0;
+  font-size: 10px;
+  color: var(--cv-text);
+  line-height: 1.45;
+}
+
+.modern-main .cv-tasks {
+  margin: 3px 0 0 14px;
+  padding: 0;
+  font-size: 10px;
+  color: var(--cv-text);
+  line-height: 1.45;
+}
+
+.modern-main .cv-tasks li {
+  margin-bottom: 1px;
+}
+
+.modern-main .cv-tasks li::marker {
+  color: var(--cv-primary);
+}
+
+/* ---- Main: Unterschrift ---- */
+.modern-main .cv-signature {
+  margin-top: 28px;
+}
+
+.modern-main .cv-sig-line {
+  font-size: 10px;
+  color: var(--cv-text);
+  margin-bottom: 24px;
+}
+
+.modern-main .cv-sig-placeholder {
+  width: 180px;
+  border-bottom: 1px solid var(--cv-text-light);
+}
+
+/* ---- Print ---- */
+@media print {
+  .cv-preview {
+    padding: 0;
+  }
+}
+{% endblock %}
+
+{% block page_content %}
+<div class="modern-sidebar">
+  {# ---- Photo ---- #}
+  {% if persoenliche_daten.foto %}
+  <div class="modern-photo-wrap">
+    <img src="{{ persoenliche_daten.foto }}" alt="Bewerbungsfoto" class="modern-photo">
+  </div>
+  {% endif %}
+
+  {# ---- Name & Contact (reuse partial, styled via .modern-sidebar parent) ---- #}
+  {% include "cv/sections/persoenliche_daten.html" %}
+
+  {# ---- Kenntnisse (inline for dark-bg control) ---- #}
+  {% if kenntnisse.eintraege %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Kenntnisse</h2>
+    <div class="cv-divider"></div>
+    <div class="cv-skills-grid">
+      {% for entry in kenntnisse.eintraege %}
+      <div class="cv-skill">
+        <div class="cv-skill-header">
+          <span>{{ entry.name }}</span>
+          {% if entry.kategorie %}<span class="cv-skill-cat">{{ entry.kategorie }}</span>{% endif %}
+        </div>
+        <div class="cv-skill-bar">
+          <div class="cv-skill-fill" style="width: {% widthratio entry.niveau 5 100 %}%"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---- Sprachen (inline for dark-bg control) ---- #}
+  {% if sprachen.eintraege %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Sprachen</h2>
+    <div class="cv-divider"></div>
+    <div class="cv-lang-list">
+      {% for entry in sprachen.eintraege %}
+      <div class="cv-lang">
+        <span class="cv-lang-name">{{ entry.sprache }}</span>
+        <span class="cv-lang-badge">{% if entry.ist_muttersprache %}Muttersprache{% else %}{{ entry.niveau }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---- Interessen (inline for dark-bg control) ---- #}
+  {% if interessen.interessen %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Interessen</h2>
+    <div class="cv-divider"></div>
+    <p class="cv-interests">{{ interessen.interessen|join:", " }}</p>
+  </div>
+  {% endif %}
+</div>
+
+<div class="modern-main">
+  {% if berufserfahrung.eintraege %}
+    {% include "cv/sections/berufserfahrung.html" %}
+  {% endif %}
+
+  {% if ausbildung.eintraege %}
+    {% include "cv/sections/ausbildung.html" %}
+  {% endif %}
+
+  {% if weiterbildungen.eintraege %}
+    {% include "cv/sections/weiterbildungen.html" %}
+  {% endif %}
+
+  {% if ehrenamt.eintraege %}
+    {% include "cv/sections/ehrenamt.html" %}
+  {% endif %}
+
+  {% include "cv/sections/unterschrift.html" %}
+</div>
+{% endblock %}

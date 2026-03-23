@@ -1,0 +1,474 @@
+{% extends "cv/base_cv.html" %}
+
+{% block template_css %}
+/* ============================================================
+   KREATIV — Bold Header Band + Timeline Layout
+   Target: Creative, Startup, Design, Marketing industries
+   ============================================================ */
+
+/* ---- Layout ---- */
+.cv-preview {
+  padding: 0;
+}
+
+/* ---- Hero Band ---- */
+.kreativ-hero {
+  background: var(--cv-primary);
+  color: #ffffff;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 60mm;
+}
+
+.kreativ-photo {
+  width: 90px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.kreativ-hero-info {
+  flex: 1;
+}
+
+.kreativ-hero-name {
+  font-family: var(--cv-font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px;
+  color: #ffffff;
+}
+
+.kreativ-hero-title {
+  font-family: var(--cv-font-heading);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+}
+
+.kreativ-hero-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.kreativ-hero-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6px;
+}
+
+.kreativ-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 3px;
+}
+
+/* ---- Content area ---- */
+.kreativ-content {
+  padding: 28px 40px 36px;
+}
+
+/* ---- Section titles ---- */
+.kreativ-content .cv-section {
+  margin-bottom: 18px;
+}
+
+.kreativ-content .cv-section-title {
+  font-family: var(--cv-font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--cv-primary);
+  margin: 0 0 4px;
+}
+
+.kreativ-content .cv-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--cv-primary) 0%, transparent 100%);
+  margin-bottom: 12px;
+}
+
+/* ---- Timeline entries (berufserfahrung, ausbildung, weiterbildungen, ehrenamt) ---- */
+.kreativ-timeline .cv-entry {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 14px;
+  border-left: 2px solid var(--cv-primary);
+}
+
+.kreativ-timeline .cv-entry::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background: var(--cv-primary);
+  border-radius: 50%;
+}
+
+.kreativ-timeline .cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.kreativ-timeline .cv-entry-header strong {
+  font-family: var(--cv-font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cv-text);
+}
+
+.kreativ-timeline .cv-date {
+  font-family: var(--cv-font-heading);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--cv-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.kreativ-timeline .cv-entry-sub {
+  font-size: 10px;
+  color: var(--cv-secondary);
+  margin-top: 1px;
+}
+
+.kreativ-timeline .cv-entry-desc {
+  margin: 3px 0 0;
+  font-size: 10px;
+  color: var(--cv-text);
+  line-height: 1.45;
+}
+
+.kreativ-timeline .cv-tasks {
+  margin: 4px 0 0 14px;
+  padding: 0;
+  font-size: 10px;
+  color: var(--cv-text);
+  line-height: 1.45;
+}
+
+.kreativ-timeline .cv-tasks li {
+  margin-bottom: 1px;
+}
+
+.kreativ-timeline .cv-tasks li::marker {
+  color: var(--cv-primary);
+}
+
+/* ---- Kenntnisse: pill badges ---- */
+.kreativ-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kreativ-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--cv-font-heading);
+  font-size: 9.5px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--cv-surface);
+  color: var(--cv-text);
+  border: 1px solid var(--cv-border);
+}
+
+.kreativ-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cv-primary);
+  flex-shrink: 0;
+}
+
+.kreativ-pill-level {
+  font-size: 8px;
+  color: var(--cv-text-light);
+}
+
+/* ---- Sprachen: horizontal badges ---- */
+.kreativ-lang-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kreativ-lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--cv-font-heading);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--cv-primary);
+  color: #ffffff;
+}
+
+.kreativ-lang-level {
+  font-size: 8.5px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* ---- Interessen: pill tags ---- */
+.kreativ-interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kreativ-interest-tag {
+  font-family: var(--cv-font-heading);
+  font-size: 9px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: var(--cv-surface);
+  color: var(--cv-text-light);
+  border: 1px solid var(--cv-border);
+}
+
+/* ---- Unterschrift ---- */
+.kreativ-content .cv-signature {
+  margin-top: 28px;
+}
+
+.kreativ-content .cv-sig-line {
+  font-size: 10px;
+  color: var(--cv-text);
+  margin-bottom: 24px;
+}
+
+.kreativ-content .cv-sig-placeholder {
+  width: 180px;
+  border-bottom: 1px solid var(--cv-text-light);
+}
+
+/* ---- Print ---- */
+@media print {
+  .cv-preview {
+    padding: 0;
+  }
+}
+{% endblock %}
+
+{% block page_content %}
+{# ---- Hero Band ---- #}
+<div class="kreativ-hero">
+  {% if persoenliche_daten.foto %}
+  <img src="{{ persoenliche_daten.foto }}" alt="Bewerbungsfoto" class="kreativ-photo">
+  {% endif %}
+
+  <div class="kreativ-hero-info">
+    {% if persoenliche_daten.vorname or persoenliche_daten.nachname %}
+    <h1 class="kreativ-hero-name">{{ persoenliche_daten.vorname }} {{ persoenliche_daten.nachname }}</h1>
+    {% endif %}
+
+    {% if persoenliche_daten.berufstitel %}
+    <p class="kreativ-hero-title">{{ persoenliche_daten.berufstitel }}</p>
+    {% endif %}
+
+    {% if persoenliche_daten.email or persoenliche_daten.telefon or persoenliche_daten.stadt %}
+    <div class="kreativ-hero-contact">
+      {% if persoenliche_daten.email %}<span>{{ persoenliche_daten.email }}</span>{% endif %}
+      {% if persoenliche_daten.telefon %}<span>{{ persoenliche_daten.telefon }}</span>{% endif %}
+      {% if persoenliche_daten.stadt %}<span>{{ persoenliche_daten.stadt }}</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if persoenliche_daten.geburtsdatum or persoenliche_daten.staatsangehoerigkeit or persoenliche_daten.familienstand %}
+    <div class="kreativ-hero-details">
+      {% if persoenliche_daten.geburtsdatum %}
+      <span>Geb. {{ persoenliche_daten.geburtsdatum }}{% if persoenliche_daten.geburtsort %}, {{ persoenliche_daten.geburtsort }}{% endif %}</span>
+      {% endif %}
+      {% if persoenliche_daten.staatsangehoerigkeit %}<span>{{ persoenliche_daten.staatsangehoerigkeit }}</span>{% endif %}
+      {% if persoenliche_daten.familienstand %}<span>{{ persoenliche_daten.familienstand }}</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if persoenliche_daten.linkedin or persoenliche_daten.xing or persoenliche_daten.website %}
+    <div class="kreativ-hero-links">
+      {% if persoenliche_daten.linkedin %}<span>LinkedIn: {{ persoenliche_daten.linkedin }}</span>{% endif %}
+      {% if persoenliche_daten.xing %}<span>Xing: {{ persoenliche_daten.xing }}</span>{% endif %}
+      {% if persoenliche_daten.website %}<span>{{ persoenliche_daten.website }}</span>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{# ---- Content ---- #}
+<div class="kreativ-content">
+
+  {# ---- Berufserfahrung (timeline) ---- #}
+  {% if berufserfahrung.eintraege %}
+  <div class="cv-section kreativ-timeline">
+    <h2 class="cv-section-title">Berufserfahrung</h2>
+    <div class="cv-divider"></div>
+    {% for entry in berufserfahrung.eintraege %}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>{{ entry.position }}</strong>
+        <span class="cv-date">{% if entry.von %}{{ entry.von }}{% endif %}{% if entry.von and entry.ist_aktuell or entry.von and entry.bis %} – {% endif %}{% if entry.ist_aktuell %}heute{% elif entry.bis %}{{ entry.bis }}{% endif %}</span>
+      </div>
+      <div class="cv-entry-sub">
+        {{ entry.unternehmen }}{% if entry.ort %}, {{ entry.ort }}{% endif %}
+      </div>
+      {% if entry.beschreibung %}
+      <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+      {% endif %}
+      {% if entry.aufgaben %}
+      <ul class="cv-tasks">
+        {% for aufgabe in entry.aufgaben %}
+        <li>{{ aufgabe }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ---- Ausbildung (timeline) ---- #}
+  {% if ausbildung.eintraege %}
+  <div class="cv-section kreativ-timeline">
+    <h2 class="cv-section-title">Ausbildung</h2>
+    <div class="cv-divider"></div>
+    {% for entry in ausbildung.eintraege %}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>{{ entry.abschluss }}{% if entry.fachrichtung %} — {{ entry.fachrichtung }}{% endif %}</strong>
+        <span class="cv-date">{% if entry.von %}{{ entry.von }}{% endif %}{% if entry.von and entry.bis %} – {% endif %}{% if entry.bis %}{{ entry.bis }}{% endif %}</span>
+      </div>
+      <div class="cv-entry-sub">
+        {{ entry.institution }}{% if entry.ort %}, {{ entry.ort }}{% endif %}
+      </div>
+      {% if entry.note %}
+      <p class="cv-entry-desc">Note: {{ entry.note }}</p>
+      {% endif %}
+      {% if entry.beschreibung %}
+      <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ---- Weiterbildungen (timeline) ---- #}
+  {% if weiterbildungen.eintraege %}
+  <div class="cv-section kreativ-timeline">
+    <h2 class="cv-section-title">Weiterbildungen</h2>
+    <div class="cv-divider"></div>
+    {% for entry in weiterbildungen.eintraege %}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>{{ entry.titel }}</strong>
+        {% if entry.datum %}<span class="cv-date">{{ entry.datum }}</span>{% endif %}
+      </div>
+      {% if entry.anbieter %}
+      <div class="cv-entry-sub">{{ entry.anbieter }}</div>
+      {% endif %}
+      {% if entry.beschreibung %}
+      <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ---- Ehrenamt (timeline) ---- #}
+  {% if ehrenamt.eintraege %}
+  <div class="cv-section kreativ-timeline">
+    <h2 class="cv-section-title">Ehrenamt</h2>
+    <div class="cv-divider"></div>
+    {% for entry in ehrenamt.eintraege %}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <strong>{{ entry.rolle }}</strong>
+        <span class="cv-date">{% if entry.von %}{{ entry.von }}{% endif %}{% if entry.von and entry.bis %} – {% endif %}{% if entry.bis %}{{ entry.bis }}{% endif %}</span>
+      </div>
+      <div class="cv-entry-sub">{{ entry.organisation }}</div>
+      {% if entry.beschreibung %}
+      <p class="cv-entry-desc">{{ entry.beschreibung }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ---- Kenntnisse (pill badges) ---- #}
+  {% if kenntnisse.eintraege %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Kenntnisse</h2>
+    <div class="cv-divider"></div>
+    <div class="kreativ-pills">
+      {% for entry in kenntnisse.eintraege %}
+      <span class="kreativ-pill">
+        <span class="kreativ-pill-dot"></span>
+        {{ entry.name }}
+        {% if entry.kategorie %}<span class="kreativ-pill-level">{{ entry.kategorie }}</span>{% endif %}
+      </span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---- Sprachen (horizontal badges) ---- #}
+  {% if sprachen.eintraege %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Sprachen</h2>
+    <div class="cv-divider"></div>
+    <div class="kreativ-lang-badges">
+      {% for entry in sprachen.eintraege %}
+      <span class="kreativ-lang-badge">
+        {{ entry.sprache }}
+        <span class="kreativ-lang-level">{% if entry.ist_muttersprache %}Muttersprache{% else %}{{ entry.niveau }}{% endif %}</span>
+      </span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---- Interessen (tags) ---- #}
+  {% if interessen.interessen %}
+  <div class="cv-section">
+    <h2 class="cv-section-title">Interessen</h2>
+    <div class="cv-divider"></div>
+    <div class="kreativ-interest-tags">
+      {% for interesse in interessen.interessen %}
+      <span class="kreativ-interest-tag">{{ interesse }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {# ---- Unterschrift ---- #}
+  {% include "cv/sections/unterschrift.html" %}
+
+</div>
+{% endblock %}
