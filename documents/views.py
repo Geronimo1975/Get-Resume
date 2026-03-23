@@ -60,8 +60,17 @@ class DocumentViewSet(viewsets.ModelViewSet):
     def ats_score(self, request, pk=None):
         """Calculate ATS compatibility score."""
         document = self.get_object()
-        # TODO: ATS scoring logic
-        return Response({"score": 0, "suggestions": []})
+        sections = document.sections.filter(is_visible=True)
+        section_data = {}
+        for s in sections:
+            section_data[s.section_type] = s.content
+
+        job_description = request.query_params.get("job_description")
+
+        from ats.services import ATSScoringService
+        service = ATSScoringService()
+        result = service.score(section_data, job_description)
+        return Response(result)
 
     @action(detail=True, methods=["get"])
     def pdf(self, request, pk=None):
